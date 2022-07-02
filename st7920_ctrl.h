@@ -1,3 +1,7 @@
+//This is a resource to control the ST7920 Graphic LCD Controller.
+//Notice that this code is meant to be used for the standard 128x64 pixel mapping Graphic LCD Screens.
+//Different pixel mapping screens might not work properly with this code.
+
 #ifndef ST7920_CTRL_H
 #define ST7920_CTRL_H
 
