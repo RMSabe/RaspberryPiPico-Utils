@@ -75,11 +75,9 @@ void st7920_graphic_buffer_malloc(st7920_t *lcd)
   while(n < 32)
   {
     lcd->graphic_buffer[n] = (uint16_t*) malloc(16*sizeof(uint16_t));
+    memset(lcd->graphic_buffer[n], 0, 16*sizeof(uint16_t));
     n++;
   }
-  
-  uint8_t p = 0;
-  for(n = 0; n < 32; n++) for(p = 0; p < 16; p++) lcd->graphic_buffer[n][p] = 0;
   
   return;
 }
@@ -124,9 +122,12 @@ void st7920_set_display_mode(st7920_t *lcd, st7920_display_mode_t display_mode)
 
 void st7920_clear_graphic_buffer(st7920_t *lcd)
 {
-  uint8_t cy = 0;
-  uint8_t page = 0;
-  for(cy = 0; cy < 32; cy++) for(page = 0; page < 16; page++) lcd->graphic_buffer[cy][page] = 0;
+  uint8_t n = 0;
+  while(n < 32)
+  {
+    memset(lcd->graphic_buffer[n], 0, 16*sizeof(uint16_t));
+    n++;
+  }
   
   return;
 }
